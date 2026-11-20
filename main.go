@@ -26,12 +26,21 @@ const ( // Define application configuration.
 )
 
 var machinePages = []string{ // Define the machine pages to scrape.
-	"https://tormach.com/machines/mills/1500mx.html",   // 1500MX machine page.
-	"https://tormach.com/machines/mills/1100mx.html",   // 1100MX machine page.
-	"https://tormach.com/machines/mills/770mx.html",    // 770MX machine page.
-	"https://tormach.com/machines/mills/1100m.html",    // 1100M machine page.
-	"https://tormach.com/machines/mills/770m.html",     // 770M machine page.
-	"https://tormach.com/machines/mills/pcnc-440.html", // PCNC 440 machine page.
+	"https://tormach.com/machines/mills/1500mx.html",
+	"https://tormach.com/machines/mills/1100mx.html",
+	"https://tormach.com/machines/mills/770mx.html",
+	"https://tormach.com/machines/mills/1100m.html",
+	"https://tormach.com/machines/mills/770m.html",
+	"https://tormach.com/machines/mills/pcnc-440.html",
+	"https://tormach.com/machines/routers/24r-cnc-router.html",
+	"https://tormach.com/machines/routers/xstech-pro-cnc-router.html",
+	"https://tormach.com/machines/routers/xstech-router.html",
+	"https://tormach.com/machines/lathes/15lx-lathe.html",
+	"https://tormach.com/machines/lathes/15l-slant-pro-lathe.html",
+	"https://tormach.com/machines/lathes/8l-lathe.html",
+	"https://tormach.com/machines/bandsaws.html",
+	"https://tormach.com/machines/automation-solutions.html",
+	"https://tormach.com/machines/education-bundles.html",
 }
 
 var assetURLPattern = regexp.MustCompile(`(?:https?://(?:www\.)?tormach\.com)?/docs/download/assetlink/asset_id/[0-9]+`) // Match Tormach asset URLs.
