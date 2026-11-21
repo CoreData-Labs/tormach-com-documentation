@@ -20,9 +20,12 @@ import ( // Import required packages.
 )
 
 const ( // Define application configuration.
-	outputDirectory = "PDFs"            // Set the PDF output directory.
-	requestDelay    = time.Second       // Set the delay between requests.
-	maxPDFSize      = 100 * 1024 * 1024 // Set the maximum PDF size to 100 MB.
+	outputDirectory = "PDFs"                                                    // Set the PDF output directory.
+	requestDelay    = time.Second                                               // Set the delay between requests.
+	maxPDFSize      = 100 * 1024 * 1024                                         // Set the maximum PDF size to 100 MB.
+	assetIDStart    = 0                                                         // Set the first asset ID to try.
+	assetIDEnd      = 1000                                                      // Set the last asset ID to try (inclusive).
+	assetURLFormat  = "https://tormach.com/docs/download/assetlink/asset_id/%d" // Set the asset URL format.
 )
 
 var machinePages = []string{ // Define the machine pages to scrape.
@@ -113,6 +116,10 @@ func main() {
 		}
 
 		logger.Debug("Finished scraping page", "url", pageURL, "assets", len(assetURLs)) // Log scraping results.
+	}
+
+	for id := assetIDStart; id <= assetIDEnd; id++ { // Iterate through the asset ID range.
+		discoveredURLs[fmt.Sprintf(assetURLFormat, id)] = struct{}{} // Add the URL (deduplicated by the map).
 	}
 
 	logger.Debug("Total unique asset URLs discovered", "count", len(discoveredURLs)) // Log discovered URL count.
